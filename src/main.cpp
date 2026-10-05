@@ -85,12 +85,12 @@ public:
 
     void Update()
     {
-        if (arcade::IsActionDown(arcade::Player::Any, arcade::Action::Up))
+        if (arcade::IsActionDown(arcade::Player::One, arcade::Action::Up))
         {
             y = y - speed;
         }
 
-        if (arcade::IsActionDown(arcade::Player::Any, arcade::Action::Down))
+        if (arcade::IsActionDown(arcade::Player::One, arcade::Action::Down))
         {
             y = y + speed;
         }
