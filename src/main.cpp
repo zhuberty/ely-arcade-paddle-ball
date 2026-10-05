@@ -1,5 +1,7 @@
 #include <iostream>
 #include "raylib.h"
+#include "arcade_input.h"
+#include "arcade_input_setup.h"
 
 using namespace std;
 
@@ -83,12 +85,12 @@ public:
 
     void Update()
     {
-        if (IsKeyDown(KEY_UP))
+        if (arcade::IsActionDown(arcade::Player::Any, arcade::Action::Up))
         {
             y = y - speed;
         }
 
-        if (IsKeyDown(KEY_DOWN))
+        if (arcade::IsActionDown(arcade::Player::Any, arcade::Action::Down))
         {
             y = y + speed;
         }
@@ -145,6 +147,12 @@ int main(void)
 
     while (WindowShouldClose() == false)
     {
+        arcade::UpdateInput();
+
+        // Encoder tools: F2 = assign Player 1/2, F3 = hardware input test
+        if (IsKeyPressed(KEY_F2)) arcade::RunEncoderSetup();
+        if (IsKeyPressed(KEY_F3)) arcade::RunEncoderTest();
+
         BeginDrawing();
 
         // Updating
